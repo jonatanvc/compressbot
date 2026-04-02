@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Servidor local de Telegram API
+  telegram-api:
+    image: aiogram/telegram-bot-api:latest
+    container_name: telegram-local-api
+    restart: unless-stopped
+    environment:
+      TELEGRAM_API_ID: ${29731907}
+      TELEGRAM_API_HASH: ${9dc7dc047bf497f26ef6fa4c6e64689f}
+      TELEGRAM_LOCAL: "true"
+    volumes:
+      - telegram-data:/var/lib/telegram-bot-api
+    expose:
+      - "8081"
+    networks:
+      - dokploy-network
+
+  # Tu bot (construido desde tu Dockerfile)
+  tu-bot:
+    build: .                          # Usa tu Dockerfile
+    container_name: mi-bot-compresor
+    restart: unless-stopped
+    environment:
+      BOT_TOKEN: ${8402063283:AAF8FX1wC9bZShudD1H8xXRFQ4hcr14kqcU}
+      # 👇 Clave: apunta al nombre del servicio, NO a localhost
+      TELEGRAM_API_BASE: "http://telegram-api:8081/bot"
+    depends_on:
+      - telegram-api
+    networks:
+      - dokploy-network
+    volumes:
+      # Opcional: si tu bot guarda archivos temporales
+      - temp-data:/app/temp
+
+volumes:
+  telegram-data:
+  temp-data:
+
+networks:
+  dokploy-network:
+    external: true   # Dokploy crea esta red automáticamente
