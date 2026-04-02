@@ -20,7 +20,7 @@ services:
   # Tu bot (construido desde tu Dockerfile)
   tu-bot:
     build: .                          # Usa tu Dockerfile
-    container_name: mi-bot-compresor
+    container_name: compressbot
     restart: unless-stopped
     environment:
       BOT_TOKEN: ${8402063283:AAF8FX1wC9bZShudD1H8xXRFQ4hcr14kqcU}
