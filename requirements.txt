@@ -1,0 +1,5 @@
+python-telegram-bot==21.7
+rarfile==4.2
+pyzipper==0.3.6
+python-dotenv==0.21.1
+mutagen==1.47.0
