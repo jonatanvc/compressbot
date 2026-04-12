@@ -79,4 +79,4 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}
 # Techo para subida directa y tamaño maximo por parte.
 # 1.5 GB: lo suficientemente grande para minimizar partes, pero evita que
 # el Bot API local se cuelgue con requests HTTP de 2 GB.
-MAX_DIRECT_UPLOAD_BYTES = 2000 * 1024 * 1024
+MAX_DIRECT_UPLOAD_BYTES = 1500 * 1024 * 1024
