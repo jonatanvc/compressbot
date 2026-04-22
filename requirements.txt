@@ -4,4 +4,5 @@ pyzipper==0.3.6
 python-dotenv==0.21.1
 mutagen==1.47.0
 gdown==5.2.0
+mega.py
 httpx
